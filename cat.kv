@@ -1,0 +1,35 @@
+#:kivy 1.0.9
+ImageWidget:
+    canvas.before:
+        Color: 
+            rgba:0.6, 0.6, 0.6, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    #ここからImageWidgetの定義
+    BoxLayout: 
+        #以下に設定した要素の表示方向 今回は縦
+        orientation: 'vertical'
+        size: root.size
+
+        Image: 
+        #rootは予約語の一つ。ImageWidgetで指定したsourceを利用する
+            source: root.source
+            
+        BoxLayout: 
+            #範囲は0 ~ 1 上の要素に対してどの程度の比率で表示するのかを設定
+            size_hint_y: 0.3
+            #要素の左右上下の余白
+            padding: 20, 30, 20 , 10
+            Button:
+                id: button1
+                text: "初めの画像に戻る"
+                font_size: 30
+                on_press: root.buttonStarted()
+            Button:
+                id: button2
+                text: "ランダム表示"
+                font_size: 30
+                on_press: root.buttonRandom()
+
+
